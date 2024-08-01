@@ -1,0 +1,25 @@
+.homeComponents{
+    height: 87vh;
+}
+.userDetails{
+
+    width: 50vw;
+    height: 70vh;
+    background-color: rgba(137, 180, 180, 0.2);
+    border-radius: 30px;
+   box-shadow: rgb(139, 139, 139) 0px 5px 5px 5px;
+}
+.img-input{
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top:25%;
+    left: 45%;
+    border-radius: 20px;
+
+}
+
+.icons{
+    right: 28%;
+    bottom: 17%;
+}
