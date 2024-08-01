@@ -83,11 +83,12 @@ const handleLogin=async(e)=>{
 
  try{
   const response = await axios.post('http://localhost:8800/login', {email:emailRef.current.value,password:passwordRef.current.value });
-  const { token, data } = response.data;
+  console.log(response);
+  const { token, user } = response.data;
 
   if (token) {
     localStorage.setItem('token', token); 
-    localStorage.setItem('userData', JSON.stringify(data));
+    localStorage.setItem('userData', JSON.stringify(user));
     toast.success('Login Successful');
     navigate('/home');
   } else {

@@ -63,7 +63,7 @@ app.post("/login", async (req, res) => {
     if (data.length === 0)
       return res.status(404).json({ message: "User not found" });
 
-    const user = data[0]
+    const user = data[0];
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
@@ -74,7 +74,7 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign({ id: user.id, email: user.email }, "secret@123",{ expiresIn: "1h" }  
     );
 
-    return res.json({ token,data});
+    return res.json({ token,user});
   });
 });
 

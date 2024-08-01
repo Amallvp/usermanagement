@@ -15,14 +15,11 @@ function Home() {
     const userData = localStorage.getItem('userData');
 
     if (!token) {
-      navigate('/login'); // Redirect to login if no token
+      navigate('/login'); 
     } else {
       setUser(JSON.parse(userData));
     }
   }, [navigate]);
-
-  if (!user) return <p>Loading...</p>;
-
 
   return (
     <div className="home">
@@ -44,15 +41,15 @@ function Home() {
 <div className="userDetails p-5 d-flex flex-column justify-content-end">
 
     <div className='w-100' >
-        <h3>Full Name :  {user[0].name}</h3>
+        <h3>Full Name :  {user.name}</h3>
     </div>
 
     <div className='w-100 mt-5'>
-    <h3>Email ID :   {user[0].email}</h3>
+    <h3>Email ID : {user.email}</h3>
     </div>
 
     <div className='w-100 mt-5'>
-    <h3>Company Name :  {user[0].company} </h3>
+    <h3>Company Name :  {user.company}</h3>
     </div>
 
 </div>
