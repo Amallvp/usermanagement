@@ -13,13 +13,18 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const userData = localStorage.getItem('userData');
-
     if (!token) {
       navigate('/login'); 
     } else {
       setUser(JSON.parse(userData));
+      console.log(user);
     }
-  }, [navigate]);
+  }, []);
+
+  // Render loading or error state if user is null
+  if (!user) {
+    return <p>Loading...</p>; // or some other placeholder
+  }
 
   return (
     <div className="home">
@@ -38,18 +43,18 @@ function Home() {
 </div>
 
 
-<div className="userDetails p-5 d-flex flex-column justify-content-end">
+<div className="userDetails p-5 d-flex flex-column justify-content-center">
 
-    <div className='w-100' >
-        <h3>Full Name :  {user.name}</h3>
+    <div className='w-100 mt-5' >
+        <h3>Welcome {user.name} !</h3>
     </div>
 
     <div className='w-100 mt-5'>
-    <h3>Email ID : {user.email}</h3>
+    <h3>Email ID :  {user.email}</h3>
     </div>
 
     <div className='w-100 mt-5'>
-    <h3>Company Name :  {user.company}</h3>
+    <h3>Company Name :  {user.company} </h3>
     </div>
 
 </div>
