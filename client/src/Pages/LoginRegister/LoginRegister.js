@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./LoginRegister.css";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
@@ -56,13 +56,11 @@ return toast.warn('Name is required')
 }else if(!company){
   return toast.warn('Company name required')
 }
-
-
     try {
       const response = await axios.post("http://localhost:8800/users", {
         name,email,password,company,
       });
-      toast.success('Login Successful')
+      response.data && toast.success('Login Successful')
     } catch (error){
       console.log(error);
     }
@@ -83,7 +81,6 @@ const handleLogin=async(e)=>{
 
  try{
   const response = await axios.post('http://localhost:8800/login', {email:emailRef.current.value,password:passwordRef.current.value });
-  console.log(response);
   const { token, user } = response.data;
 
   if (token) {
